@@ -125,19 +125,26 @@
   Twitter:		http://twitter.com/rainerschuster
   Forums:		http://groups.google.com/group/clean-code-developer
 		http://groups.google.com/group/altnetde
-		http://groups.google.com/group/pomodorotechnique
 		http://groups.google.com/group/software_craftsmanship
 
-This timer is all about Clean Code Developers http://clean-code-developer.de, Software Craftsman like Unclebob (Author of Clean Code) and The Pomodoro Technique. Visit the website or google groups to get in touch with the author or other people participating in CCD, ALT.NET or The Pomodoro Technique
+This timer is for all Clean Code Developers http://clean-code-developer.de, Software Craftsman like Unclebob (Author of Clean Code) and The Pomodoro Technique. Visit the websites or google groups to get in touch with the inventor, author or other people participating in CCD, ALT.NET or The Pomodoro Technique
 
-Author of "The Pomodoro Technique" © Staffan Noteberg
+Author of Pomodoro Technique Illustrated" © Staffan Nöteberg
 
-  Infol:		http://www.pomodorotechnique.com
   E-mail:		staffan.noteberg@rekursiv.se
+  Infol:		http://www.pomodoro-book.com
   Blog: 		http://blog.staffannoteberg.com
   Twitter: 		http://twitter.com/staffannoteberg
   Facebook: 	http://www.facebook.com/people/Staffan-Noteberg/617899391
-  LinkedIn: 	http://www.linkedin.com/in/staffannoteberg  </value>
+  LinkedIn: 	http://www.linkedin.com/in/staffannoteberg  
+
+
+Inventor of The Pomodoro Technique © Francesco Cirillo
+
+  Homepage:	http://www.pomodorotechnique.com
+  Facebook:	http://www.facebook.com/people/Francesco-Cirillo/749198459
+  Twitter:		http://twitter.com/cirillof
+  Forums:		http://groups.google.com/group/pomodorotechnique</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

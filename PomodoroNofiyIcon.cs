@@ -44,7 +44,7 @@ namespace PomodoroTimer
 		private void initializeResources ()
 		{
 			resources = new System.ComponentModel.ComponentResourceManager ( typeof ( NotificationIconResources ) );
-			pomodoroIcon = ( Icon )resources.GetObject ( "pomodoro" );
+			pomodoroIcon = ( Icon )resources.GetObject ( "alarmclock" );
 		}
 
 		private void initializeStopWatch (int minutesToCountDown )

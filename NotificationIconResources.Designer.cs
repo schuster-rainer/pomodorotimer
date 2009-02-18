@@ -60,16 +60,23 @@ namespace PomodoroTimer {
             }
         }
         
-        internal static System.Drawing.Bitmap logo {
+        internal static System.Drawing.Icon alarmclock {
             get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("alarmclock", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
-        internal static System.Drawing.Icon pomodoro {
+        internal static System.Drawing.Icon alarmclock_preferences {
             get {
-                object obj = ResourceManager.GetObject("pomodoro", resourceCulture);
+                object obj = ResourceManager.GetObject("alarmclock_preferences", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon alarmclock_run {
+            get {
+                object obj = ResourceManager.GetObject("alarmclock_run", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

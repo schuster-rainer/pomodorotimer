@@ -8,6 +8,7 @@
     <AssemblyName>PomodoroTimer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ApplicationIcon>Resources\alarmclock.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -68,9 +69,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pomogruppo.png" />
+    <None Include="Resources\alarmclock_run.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pomodoro.ico" />
+    <None Include="Resources\alarmclock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarmclock_preferences.ico" />
   </ItemGroup>
 </Project>
