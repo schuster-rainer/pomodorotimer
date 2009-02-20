@@ -4,43 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using Microsoft.Practices.Unity;
 
 namespace PomodoroTimer
 {
 	class Programm
-	{		
+	{
 		[STAThread]
 		public static void Main ( string[] args )
 		{
 			Application.EnableVisualStyles ();
 			Application.SetCompatibleTextRenderingDefault ( false );
 
-			using ( UniqueClassInstance trayIcon = new UniqueClassInstance( "PomodoroTimer" ) )
+			using ( UniqueClassInstance trayIcon = new UniqueClassInstance ( "PomodoroTimer" ) )
 			{
 				if ( trayIcon.IsFirstInstance )
 				{
 					RunApplication ();
-				}
-				else
-				{
-					ShowApplication ();
 				}
 			}
 		}
 
 		private static void RunApplication ()
 		{
-			using ( PomodoroNofiyIcon notificationIcon = new PomodoroNofiyIcon () )
-			{
-				notificationIcon.Visible = true;
-				Application.Run ();
-			}
+			IUnityContainer container = createDependencyContainer ();
+			configureDependencyContainer ( container );
+			Pomodoro notificationIcon = container.Resolve<Pomodoro> ();			
+			notificationIcon.Visible = true;
+			Application.Run ();
 		}
 
-		private static void ShowApplication ()
+		private static IUnityContainer createDependencyContainer ()
 		{
-			throw new NotImplementedException ();
+			UnityContainer container = new UnityContainer ();
+			return container;
 		}
 
+		private static void configureDependencyContainer ( IUnityContainer container )
+		{
+			container.RegisterType<IMinuteStopWatch, MinuteStopWatch> ();
+		}
 	}
 }

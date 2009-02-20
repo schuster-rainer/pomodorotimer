@@ -30,7 +30,6 @@ namespace PomodoroTimer
 
 		public void Dispose ()
 		{
-			mutex.ReleaseMutex ();
 		}
 
 		#endregion

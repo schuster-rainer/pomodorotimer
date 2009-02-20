@@ -16,7 +16,7 @@ namespace PomodoroTimer
 		}
 	}
 
-	public class MinuteStopWatch
+	public class MinuteStopWatch : IMinuteStopWatch
 	{
 		private System.Timers.Timer timer;
 		private DateTime startTime;
@@ -27,6 +27,11 @@ namespace PomodoroTimer
 		public event EventHandler<CountDownEventArgs> Tick;
 
 		public MinuteStopWatch ( int minutesToCountDown)
+		{
+			initTimerTo ( minutesToCountDown );
+		}
+
+		private void initTimerTo ( int minutesToCountDown )
 		{
 			this.minutesToCountDown = minutesToCountDown;
 			initTimer ();
@@ -102,5 +107,22 @@ namespace PomodoroTimer
 		{
 			timer.Stop ();
 		}
+
+		#region IMinuteStopWatch Members
+
+
+		public int Countdown
+		{
+			get
+			{
+				return minutesToCountDown;
+			}
+			set
+			{
+				initTimerTo ( value );
+			}
+		}
+
+		#endregion
 	}
 }
