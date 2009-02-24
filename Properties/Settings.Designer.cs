@@ -25,10 +25,10 @@ namespace PomodoroTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25")]
-        public int PomodoroTimeInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("00:25:00")]
+        public global::System.TimeSpan PomodoroTimeInterval {
             get {
-                return ((int)(this["PomodoroTimeInterval"]));
+                return ((global::System.TimeSpan)(this["PomodoroTimeInterval"]));
             }
             set {
                 this["PomodoroTimeInterval"] = value;
@@ -37,10 +37,10 @@ namespace PomodoroTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int PomodoroBreakTimeInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("00:05:00")]
+        public global::System.TimeSpan PomodoroBreakTimeInterval {
             get {
-                return ((int)(this["PomodoroBreakTimeInterval"]));
+                return ((global::System.TimeSpan)(this["PomodoroBreakTimeInterval"]));
             }
             set {
                 this["PomodoroBreakTimeInterval"] = value;
@@ -49,13 +49,13 @@ namespace PomodoroTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int SetBreakTimeInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("00:20:00")]
+        public global::System.TimeSpan PomodoroSetBreakTimeInterval {
             get {
-                return ((int)(this["SetBreakTimeInterval"]));
+                return ((global::System.TimeSpan)(this["PomodoroSetBreakTimeInterval"]));
             }
             set {
-                this["SetBreakTimeInterval"] = value;
+                this["PomodoroSetBreakTimeInterval"] = value;
             }
         }
     }

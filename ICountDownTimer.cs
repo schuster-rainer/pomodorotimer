@@ -1,12 +1,13 @@
 ﻿using System;
 namespace PomodoroTimer
 {
-	public interface IMinuteStopWatch
+	public interface ICountDownTimer
 	{
 		void Start ();
 		void Stop ();
-		int Countdown { get; set; }
-		
+		TimeSpan CountDown { get; set; }
+
+		event EventHandler<CountDownEventArgs> TimerChanged;
 		event EventHandler Alert;
 		event EventHandler<CountDownEventArgs> Tick;
 	}

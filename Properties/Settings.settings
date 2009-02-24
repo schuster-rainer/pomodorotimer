@@ -2,14 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PomodoroTimer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PomodoroTimeInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">25</Value>
+    <Setting Name="PomodoroTimeInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:25:00</Value>
     </Setting>
-    <Setting Name="PomodoroBreakTimeInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+    <Setting Name="PomodoroBreakTimeInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:05:00</Value>
     </Setting>
-    <Setting Name="SetBreakTimeInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">20</Value>
+    <Setting Name="PomodoroSetBreakTimeInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:20:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -16,39 +16,51 @@ namespace PomodoroTimer
 		}
 	}
 
-	public class MinuteStopWatch : IMinuteStopWatch
+	public class CountDownTimer : ICountDownTimer
 	{
 		private System.Timers.Timer timer;
 		private DateTime startTime;
 		private DateTime lastSignaledTime;
-		private int minutesToCountDown;		
 
+		#region ICountDownTimer Members
+
+		public TimeSpan CountDown { get; set; }
+		public event EventHandler<CountDownEventArgs> TimerChanged;
 		public event EventHandler Alert;
 		public event EventHandler<CountDownEventArgs> Tick;
 
-		public MinuteStopWatch ( int minutesToCountDown)
+		public void Start ()
 		{
-			initTimerTo ( minutesToCountDown );
+			startTime = DateTime.Now;
+			timer.Stop ();
+			timer.Start ();
 		}
 
-		private void initTimerTo ( int minutesToCountDown )
+		public void Stop ()
 		{
-			this.minutesToCountDown = minutesToCountDown;
-			initTimer ();
+			timer.Stop ();
 		}
 
-		private void initTimer ()
+		#endregion
+
+		public CountDownTimer ()
 		{
-			createOneSecondElapsingTimer ();
+			initializeTimer ();
+		}
+
+		private void initializeTimer ()
+		{
+			createTimerToTickAfterOneSecond ();
 			attachTickEvent ();
 		}
+		
 
-		private void createOneMinuteElapsingTimer ()
+		private void createTimerToTickAfterOneMinute ()
 		{
 			timer = new System.Timers.Timer ( 1000 * 60 );
 		}
 
-		private void createOneSecondElapsingTimer ()
+		private void createTimerToTickAfterOneSecond ()
 		{
 			timer = new System.Timers.Timer ( 1000 );
 		}
@@ -67,27 +79,29 @@ namespace PomodoroTimer
 		private void checkCountDown ()
 		{
 			TimeSpan elapsedTime = lastSignaledTime-startTime;
-            bool timeHasExpired = elapsedTime.Minutes >= minutesToCountDown;
+            bool timeHasExpired = elapsedTime >= CountDown;
 
-			notifyTick ( elapsedTime );
+			OnTick ( elapsedTime );
 			
 			if ( timeHasExpired )
 			{
 				Stop ();
-				notifyAlert ();
+				OnAlert ();
 			}			
 		}
 
-		private void notifyTick ( TimeSpan duration)
+		private void OnTick ( TimeSpan duration)
 		{
-			EventHandler<CountDownEventArgs> tick = new EventHandler<CountDownEventArgs> ( Tick );
-			if ( tick != null )
-			{
-				tick ( this, new CountDownEventArgs ( duration ) );
-			}
+			FireCountDownEvent ( Tick, duration );
 		}
 
-		private void notifyAlert ()
+
+		private void OnTimerChanged ( TimeSpan duration )
+		{
+			FireCountDownEvent ( TimerChanged, duration );
+		}
+
+		private void OnAlert ()
 		{
 			EventHandler alert = new EventHandler ( Alert );
 			if ( alert != null )
@@ -96,33 +110,15 @@ namespace PomodoroTimer
 			}
 		}
 
-		public void Start ()
+		private void FireCountDownEvent (
+			EventHandler<CountDownEventArgs> eventHandler,
+			TimeSpan duration )
 		{
-			startTime = DateTime.Now;
-			timer.Stop ();
-			timer.Start ();
-		}
-
-		public void Stop ()
-		{
-			timer.Stop ();
-		}
-
-		#region IMinuteStopWatch Members
-
-
-		public int Countdown
-		{
-			get
+			EventHandler<CountDownEventArgs> eventHandlerWrapper = new EventHandler<CountDownEventArgs> ( eventHandler );
+			if ( eventHandlerWrapper != null )
 			{
-				return minutesToCountDown;
-			}
-			set
-			{
-				initTimerTo ( value );
+				eventHandlerWrapper ( this, new CountDownEventArgs ( duration ) );
 			}
 		}
-
-		#endregion
 	}
 }

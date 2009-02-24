@@ -8,7 +8,7 @@ using Microsoft.Practices.Unity;
 
 namespace PomodoroTimer
 {
-	class Programm
+    class Programm
 	{
 		[STAThread]
 		public static void Main ( string[] args )
@@ -29,7 +29,7 @@ namespace PomodoroTimer
 		{
 			IUnityContainer container = createDependencyContainer ();
 			configureDependencyContainer ( container );
-			Pomodoro notificationIcon = container.Resolve<Pomodoro> ();			
+			PomodoroView notificationIcon = container.Resolve<PomodoroView> ();			
 			notificationIcon.Visible = true;
 			Application.Run ();
 		}
@@ -42,7 +42,11 @@ namespace PomodoroTimer
 
 		private static void configureDependencyContainer ( IUnityContainer container )
 		{
-			container.RegisterType<IMinuteStopWatch, MinuteStopWatch> ();
+			container.RegisterType<IResourceRepository, ResourceRepository> ( new ContainerControlledLifetimeManager () );
+			container.RegisterType<ICountDownTimer, CountDownTimer> (new ContainerControlledLifetimeManager() );
+			container.RegisterType<IPomodoroController, PomodoroController> (new ContainerControlledLifetimeManager());
+			container.RegisterType<IPomodoroView, PomodoroView> ( new ContainerControlledLifetimeManager());
+			container.RegisterType<IPomodorCommandFactory, PomodoroCommandFactory> (new ContainerControlledLifetimeManager());
 		}
 	}
 }
