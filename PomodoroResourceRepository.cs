@@ -2,18 +2,18 @@ using System.ComponentModel;
 
 namespace PomodoroTimer
 {
-	public class ResourceRepository : IResourceRepository
+	public class PomodoroResourceRepository : IResourceRepository
 	{
 		private ComponentResourceManager resources;
 
-		public ResourceRepository ()
+		public PomodoroResourceRepository ()
 		{
 			initializeResourceManager ();
 		}
 
 		private void initializeResourceManager ()
 		{
-			resources = new ComponentResourceManager ( typeof ( NotificationIconResources ) );
+			resources = new ComponentResourceManager ( typeof ( PomodoroResources ) );
 		}
 
 		#region IResources Members

@@ -1,16 +1,11 @@
 using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows;
-using System.Windows.Forms;
-using PomodoroTimer.Properties;
 
 namespace PomodoroTimer
 {
+	using Commands;
+
 	public class PomodoroController : IPomodoroController
 	{
-		#region IPomodoroController Members
-
 		public ICommand StartCommand { get; private set; }
 		public ICommand StartBreakCommand { get; private set; }
 		public ICommand StartSetBreakCommand { get; private set; }
@@ -19,10 +14,8 @@ namespace PomodoroTimer
 
 		public IPomodoroView View { get; set; }
 
-		#endregion
-
-		private ICountDownTimer countDownTimer;		
-		private IPomodorCommandFactory commandFactory;
+		private readonly ICountDownTimer countDownTimer;		
+		private readonly IPomodorCommandFactory commandFactory;
 		private TimeSpan timeSpanToCountDown;
 
 		public PomodoroController ( ICountDownTimer countDownTimer, 
@@ -36,11 +29,11 @@ namespace PomodoroTimer
 
 		private void InitializeComponent ()
 		{
-			initializeCountDownTimer( Settings.Default.PomodoroTimeInterval );
-			initializeCommands();
+			subcribeToCountDownTimerEvents();
+			createCommands();
 		}
 
-		private void initializeCommands ()
+		private void createCommands ()
 		{
 			StartCommand = commandFactory.CreateStartCommand ();
 			StartBreakCommand = commandFactory.CreateStartBreakCommand();
@@ -49,11 +42,11 @@ namespace PomodoroTimer
 			AboutCommand = commandFactory.CreateAboutCommand ();
 		}
 
-		private void initializeCountDownTimer ( TimeSpan countDown )
+		private void subcribeToCountDownTimerEvents ()
 		{
-			countDownTimer.Tick += new EventHandler<CountDownEventArgs> ( countDownTimer_Tick );
-			countDownTimer.Alert += new EventHandler ( countDownTimer_Tick );
-			countDownTimer.TimerChanged += new EventHandler<CountDownEventArgs> ( countDownTimer_TimerChanged );
+			countDownTimer.Tick += countDownTimer_Tick;
+			countDownTimer.Alert += countDownTimer_Tick;
+			countDownTimer.TimerChanged += countDownTimer_TimerChanged;
 		}
 
 		void countDownTimer_TimerChanged ( object sender, CountDownEventArgs e )
@@ -61,7 +54,6 @@ namespace PomodoroTimer
 			timeSpanToCountDown = e.Duration;
 		}
 
-		#region Events
 		private void countDownTimer_Tick ( object sender, CountDownEventArgs e )
 		{
 			View.Countdown = timeSpanToCountDown - e.Duration;
@@ -71,6 +63,5 @@ namespace PomodoroTimer
 		{
 			View.ShowAlert ();
 		}
-		#endregion
 	}
 }

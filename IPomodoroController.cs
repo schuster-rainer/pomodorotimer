@@ -1,12 +1,7 @@
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows;
-using System.Windows.Forms;
-using PomodoroTimer.Properties;
-
 namespace PomodoroTimer
 {
+	using Commands;
+
 	public interface IPomodoroController
 	{
 		ICommand StartCommand { get; }

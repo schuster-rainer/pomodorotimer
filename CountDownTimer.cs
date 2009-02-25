@@ -1,8 +1,4 @@
 using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
@@ -12,7 +8,7 @@ namespace PomodoroTimer
 
 		public CountDownEventArgs ( TimeSpan duration )
 		{
-			this.Duration = duration;
+			Duration = duration;
 		}
 	}
 
@@ -21,13 +17,21 @@ namespace PomodoroTimer
 		private System.Timers.Timer timer;
 		private DateTime startTime;
 		private DateTime lastSignaledTime;
+		private TimeSpan countDown;
 
-		#region ICountDownTimer Members
-
-		public TimeSpan CountDown { get; set; }
 		public event EventHandler<CountDownEventArgs> TimerChanged;
 		public event EventHandler Alert;
 		public event EventHandler<CountDownEventArgs> Tick;
+
+		public TimeSpan CountDown
+		{
+			get { return countDown; }
+			set
+			{
+				countDown = value;
+				OnTimerChanged(countDown);
+			}
+		}
 
 		public void Start ()
 		{
@@ -41,8 +45,6 @@ namespace PomodoroTimer
 			timer.Stop ();
 		}
 
-		#endregion
-
 		public CountDownTimer ()
 		{
 			initializeTimer ();
@@ -53,12 +55,6 @@ namespace PomodoroTimer
 			createTimerToTickAfterOneSecond ();
 			attachTickEvent ();
 		}
-		
-
-		private void createTimerToTickAfterOneMinute ()
-		{
-			timer = new System.Timers.Timer ( 1000 * 60 );
-		}
 
 		private void createTimerToTickAfterOneSecond ()
 		{
@@ -67,7 +63,7 @@ namespace PomodoroTimer
 
 		private void attachTickEvent ()
 		{
-			timer.Elapsed += new System.Timers.ElapsedEventHandler ( timer_Elapsed );
+			timer.Elapsed += timer_Elapsed;
 		}
 
 		void timer_Elapsed ( object sender, System.Timers.ElapsedEventArgs e )
@@ -78,16 +74,15 @@ namespace PomodoroTimer
 
 		private void checkCountDown ()
 		{
-			TimeSpan elapsedTime = lastSignaledTime-startTime;
+			TimeSpan elapsedTime = lastSignaledTime - startTime;
             bool timeHasExpired = elapsedTime >= CountDown;
 
 			OnTick ( elapsedTime );
-			
-			if ( timeHasExpired )
-			{
-				Stop ();
-				OnAlert ();
-			}			
+
+			if (!timeHasExpired) return;
+
+			Stop ();
+			OnAlert ();
 		}
 
 		private void OnTick ( TimeSpan duration)
@@ -103,10 +98,9 @@ namespace PomodoroTimer
 
 		private void OnAlert ()
 		{
-			EventHandler alert = new EventHandler ( Alert );
-			if ( alert != null )
+			if ( Alert != null )
 			{
-				alert ( this, EventArgs.Empty );
+				Alert.Invoke( this, EventArgs.Empty );
 			}
 		}
 
@@ -114,10 +108,9 @@ namespace PomodoroTimer
 			EventHandler<CountDownEventArgs> eventHandler,
 			TimeSpan duration )
 		{
-			EventHandler<CountDownEventArgs> eventHandlerWrapper = new EventHandler<CountDownEventArgs> ( eventHandler );
-			if ( eventHandlerWrapper != null )
+			if ( eventHandler != null )
 			{
-				eventHandlerWrapper ( this, new CountDownEventArgs ( duration ) );
+				eventHandler.Invoke( this, new CountDownEventArgs ( duration ) );
 			}
 		}
 	}

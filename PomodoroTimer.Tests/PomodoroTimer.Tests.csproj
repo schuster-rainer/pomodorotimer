@@ -39,6 +39,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -57,10 +58,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\StartPomodoroBreakCommandSpecs.cs" />
+    <Compile Include="CountDownTimerSpecs\concern.cs" />
+    <Compile Include="CountDownTimerSpecs\when_the_timer_changes.cs" />
+    <Compile Include="CountDownTimerSpecs\when_the_timer_was_started.cs" />
+    <Compile Include="CountDownTimerSpecs\when_the_timer_was_started_and_then_stopped.cs" />
     <Compile Include="EventTestExtensions.cs" />
-    <Compile Include="CountDownTimerSpecs.cs" />
-    <Compile Include="PomodoroControllerSpecs.cs" />
+    <Compile Include="CountDownTimerSpecs\when_the_timer_expires.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\concern.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\when_about_command_is_created.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\when_exit_command_is_created.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\when_start_break_command_is_created.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\when_start_command_is_created.cs" />
+    <Compile Include="PomodoroCommandFactorySpecs\when_start_setbreak_command_is_created.cs" />
+    <Compile Include="PomodoroControllerSpecs\PomodoroControllerSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PomodoroResourceRepositorySpecs\when_icon_is_requestet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PomodoroTimer.csproj">

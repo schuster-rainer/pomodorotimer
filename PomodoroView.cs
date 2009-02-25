@@ -1,32 +1,22 @@
-﻿/*
- * Created by SharpDevelop.
- * User: RSchuster
- * Date: 16.02.2009
- * Time: 15:46
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using PomodoroTimer.Properties;
 
 namespace PomodoroTimer
 {
 
     public sealed class PomodoroView : IPomodoroView, IDisposable
 	{
-		private static int FIFTEEN_SECONDS_IN_MILLISEC = 15*1000;
+		private const int FIFTEEN_SECONDS_IN_MILLISEC = 15*1000;
 
-		private IResourceRepository resourceRepository;
-		private IPomodoroController controller;
+		private readonly IResourceRepository resourceRepository;
+		private readonly IPomodoroController controller;
 
 		private NotifyIcon notifyIcon;
 
 		private ContextMenu notificationMenu;
 		private MenuItem timerDisplayMenuItem;
 
-		#region Initialize icon and menu
 		public PomodoroView (
 						 IResourceRepository resourceRepository,
 						 IPomodoroController controller)
@@ -67,14 +57,15 @@ namespace PomodoroTimer
 
 		private void initializeNotifyIcon ()
 		{
-			notifyIcon = new NotifyIcon ();
-			notifyIcon.Icon = resourceRepository.GetEmbeddedResourceByName<Icon>("alarmclock");
-			notifyIcon.ContextMenu = notificationMenu;
-			notifyIcon.BalloonTipTitle = "Pomodoro Timer";
-			notifyIcon.BalloonTipText = "Pomodoro ended";
+			notifyIcon = new NotifyIcon
+			             	{
+			             		Icon = resourceRepository.GetEmbeddedResourceByName <Icon> ("alarmclock"),
+			             		ContextMenu = notificationMenu,
+			             		BalloonTipTitle = "Pomodoro Timer",
+			             		BalloonTipText = "Pomodoro ended"
+			             	};
 		}
 
-		#endregion	
 
 		public bool Visible
 		{
@@ -101,7 +92,7 @@ namespace PomodoroTimer
 
 		public void Show ()
 		{
-			throw new NotImplementedException ();
+			Visible = true;
 		}
 
 		public void ShowAlert()
@@ -127,7 +118,7 @@ namespace PomodoroTimer
 
 		#endregion
 
-		private string formatTimeDisplay ( int minutes, int seconds )
+		private static string formatTimeDisplay ( int minutes, int seconds )
 		{
 			return string.Format ( "{0:00.}:{1:00.}", minutes, seconds );
 		}

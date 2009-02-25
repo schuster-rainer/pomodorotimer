@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Threading;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.Bootstrapper
 {
 	public class UniqueClassInstance : IDisposable
 	{
@@ -22,7 +18,7 @@ namespace PomodoroTimer
 
 		private void createUniqueMutex ( string uniqueName )
 		{
-			this.mutex = new Mutex ( mutexIsInitiallyOwned, uniqueName, out isFirstInstance );
+			mutex = new Mutex ( mutexIsInitiallyOwned, uniqueName, out isFirstInstance );
 		}
 
 

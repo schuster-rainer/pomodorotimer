@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading;
 using Microsoft.Practices.Unity;
 
-namespace PomodoroTimer
+namespace PomodoroTimer.Bootstrapper
 {
-    class Programm
+	class Programm
 	{
 		[STAThread]
 		public static void Main ( string[] args )
@@ -16,9 +12,9 @@ namespace PomodoroTimer
 			Application.EnableVisualStyles ();
 			Application.SetCompatibleTextRenderingDefault ( false );
 
-			using ( UniqueClassInstance trayIcon = new UniqueClassInstance ( "PomodoroTimer" ) )
+			using ( var uniqueTrayIconInstance = new UniqueClassInstance ( "PomodoroTimer" ) )
 			{
-				if ( trayIcon.IsFirstInstance )
+				if ( uniqueTrayIconInstance.IsFirstInstance )
 				{
 					RunApplication ();
 				}
@@ -29,20 +25,19 @@ namespace PomodoroTimer
 		{
 			IUnityContainer container = createDependencyContainer ();
 			configureDependencyContainer ( container );
-			PomodoroView notificationIcon = container.Resolve<PomodoroView> ();			
-			notificationIcon.Visible = true;
-			Application.Run ();
+			var pomodoroView = container.Resolve<PomodoroView> ();
+			pomodoroView.Show();
+			Application.Run();
 		}
 
 		private static IUnityContainer createDependencyContainer ()
 		{
-			UnityContainer container = new UnityContainer ();
-			return container;
+			return new UnityContainer ();
 		}
 
 		private static void configureDependencyContainer ( IUnityContainer container )
 		{
-			container.RegisterType<IResourceRepository, ResourceRepository> ( new ContainerControlledLifetimeManager () );
+			container.RegisterType<IResourceRepository, PomodoroResourceRepository> ( new ContainerControlledLifetimeManager () );
 			container.RegisterType<ICountDownTimer, CountDownTimer> (new ContainerControlledLifetimeManager() );
 			container.RegisterType<IPomodoroController, PomodoroController> (new ContainerControlledLifetimeManager());
 			container.RegisterType<IPomodoroView, PomodoroView> ( new ContainerControlledLifetimeManager());
