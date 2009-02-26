@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroTimer", "PomodoroTimer.csproj", "{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroTimer.Tests", "PomodoroTimer.Tests\PomodoroTimer.Tests.csproj", "{19E5ED92-48E5-4A8B-B068-9302F0A2A9F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E5ED92-48E5-4A8B-B068-9302F0A2A9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E5ED92-48E5-4A8B-B068-9302F0A2A9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E5ED92-48E5-4A8B-B068-9302F0A2A9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E5ED92-48E5-4A8B-B068-9302F0A2A9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
