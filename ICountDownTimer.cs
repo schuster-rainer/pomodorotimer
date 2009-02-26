@@ -6,6 +6,7 @@ namespace PomodoroTimer
 		void Start ();
 		void Stop ();
 		TimeSpan CountDown { get; set; }
+        TimeSpan TickRate { get; set; }
 
 		event EventHandler<CountDownEventArgs> TimerChanged;
 		event EventHandler Alert;

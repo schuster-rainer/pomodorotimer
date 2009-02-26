@@ -18,8 +18,9 @@ namespace PomodoroTimer
 		private DateTime startTime;
 		private DateTime lastSignaledTime;
 		private TimeSpan countDown;
+	    private TimeSpan tickRate;
 
-		public event EventHandler<CountDownEventArgs> TimerChanged;
+	    public event EventHandler<CountDownEventArgs> TimerChanged;
 		public event EventHandler Alert;
 		public event EventHandler<CountDownEventArgs> Tick;
 
@@ -33,7 +34,17 @@ namespace PomodoroTimer
 			}
 		}
 
-		public void Start ()
+	    public TimeSpan TickRate
+	    {
+	        get { return tickRate; }
+	        set
+	        {
+	            tickRate = value;
+	            timer.Interval = tickRate.TotalMilliseconds;
+	        }
+	    }
+
+	    public void Start ()
 		{
 			startTime = DateTime.Now;
 			timer.Stop ();
@@ -52,13 +63,19 @@ namespace PomodoroTimer
 
 		private void initializeTimer ()
 		{
-			createTimerToTickAfterOneSecond ();
+		    createTimer();
+			setTickRateToOneSecond ();
 			attachTickEvent ();
 		}
 
-		private void createTimerToTickAfterOneSecond ()
+        private void createTimer()
+        {
+            timer = new System.Timers.Timer();
+        }
+
+        private void setTickRateToOneSecond()
 		{
-			timer = new System.Timers.Timer ( 1000 );
+            TickRate = new TimeSpan(0,0,1);
 		}
 
 		private void attachTickEvent ()
@@ -75,11 +92,11 @@ namespace PomodoroTimer
 		private void checkCountDown ()
 		{
 			TimeSpan elapsedTime = lastSignaledTime - startTime;
-            bool timeHasExpired = elapsedTime >= CountDown;
+            bool timerHasExpired = elapsedTime >= CountDown;
 
 			OnTick ( elapsedTime );
 
-			if (!timeHasExpired) return;
+			if (!timerHasExpired) return;
 
 			Stop ();
 			OnAlert ();

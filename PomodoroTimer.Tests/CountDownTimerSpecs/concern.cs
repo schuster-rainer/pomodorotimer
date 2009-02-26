@@ -6,34 +6,37 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 {
 	public abstract class concern : InstanceContextSpecification <CountDownTimer>
 	{
+        protected const int TICKRATE_IN_MILLISEC = 10;
 		protected const int EXTRA_MILLISEC_FOR_SAFTY = 20;
-		protected const int TIMERTICK_IN_MILLISEC = 1000;
 		protected TimeSpan countDownTimeSpan;
+        protected TimeSpan tickRate;
 		protected ManualResetEvent tickEvent;
 		protected ManualResetEvent alertEvent;
 
 		protected override void EstablishContext ()
 		{
 			base.EstablishContext();
-			countDownTimeSpan = new TimeSpan (0, 0, 2);
+            countDownTimeSpan = new TimeSpan(0, 0, 0, 0, TICKRATE_IN_MILLISEC*5);
+            tickRate = new TimeSpan(0, 0, 0, 0, TICKRATE_IN_MILLISEC);
 			tickEvent = new ManualResetEvent (false);
 			alertEvent = new ManualResetEvent (false);
 		}
 
 		protected override CountDownTimer CreateSut ()
 		{
-			var stopWatch = new CountDownTimer
-			                	{
-			                		CountDown = countDownTimeSpan
-			                	};
+			var countDownTimer = new CountDownTimer
+			                         {
+			                             CountDown = countDownTimeSpan,
+			                             TickRate = tickRate
+			                         };
 
-			stopWatch.Alert += (s, e) => alertEvent.Set();
-			stopWatch.Tick += (s, e) => tickEvent.Set();
+		    countDownTimer.Alert += (s, e) => alertEvent.Set();
+			countDownTimer.Tick += (s, e) => tickEvent.Set();
 
-			return stopWatch;
+			return countDownTimer;
 		}
 
-		protected int ExpirationTimeoutInMilliSec
+		protected int CountDownTimeOut
 		{
 			get
 			{
@@ -42,9 +45,9 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 			}
 		}
 
-		protected static int TickTimeoutInMilliSec
+		protected int TickRateTimeOut
 		{
-			get { return TIMERTICK_IN_MILLISEC + EXTRA_MILLISEC_FOR_SAFTY; }
+            get { return (int) tickRate.TotalMilliseconds + EXTRA_MILLISEC_FOR_SAFTY; }
 		}
 	}
 }

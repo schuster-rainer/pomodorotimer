@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Xunit;
 
@@ -10,6 +11,7 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 
 		protected override void EstablishContext ()
 		{
+            base.EstablishContext();
 			timerChangedEvent = new ManualResetEvent (false);
 		}
 
@@ -22,13 +24,13 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 
 		protected override void Because ()
 		{
-			
+		    Sut.CountDown = new TimeSpan(0,0,0,1);
 		}
 
 		[Observation]
-		public void it_should_not_tick ()
+		public void should_signal_change ()
 		{
-
+		    timerChangedEvent.wasRaisedAfter(TickRateTimeOut);
 		}
 	}
 }

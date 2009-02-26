@@ -14,9 +14,9 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		}
 
 		[Observation]
-		public void it_should_not_receive_any_more_ticks ()
+		public void should_not_receive_any_more_ticks ()
 		{
-			bool eventOccured = tickEvent.wasRaisedAfter (TickTimeoutInMilliSec);
+			bool eventOccured = tickEvent.wasRaisedAfter (TickRateTimeOut);
 			eventOccured.ShouldBeFalse();
 		}
 	}

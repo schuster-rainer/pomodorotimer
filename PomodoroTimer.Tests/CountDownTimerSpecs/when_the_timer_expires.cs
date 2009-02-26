@@ -8,22 +8,22 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		protected override void Because ()
 		{
 			Sut.Start();
-			alertEvent.wasRaisedAfter (ExpirationTimeoutInMilliSec);
+			alertEvent.wasRaisedAfter (CountDownTimeOut);
 			alertEvent.Reset();
 			tickEvent.Reset();
 		}
 
 		[Observation]
-		public void it_should_not_alert_any_more ()
+		public void should_not_alert_any_more ()
 		{
-			bool eventRaised = alertEvent.wasRaisedAfter (ExpirationTimeoutInMilliSec);
+			bool eventRaised = alertEvent.wasRaisedAfter (CountDownTimeOut);
 			eventRaised.ShouldBeFalse();
 		}
 
 		[Observation]
-		public void it_should_not_tick_any_more ()
+        public void should_not_tick_any_more()
 		{
-			bool eventRaised = tickEvent.wasRaisedAfter (TickTimeoutInMilliSec);
+			bool eventRaised = tickEvent.wasRaisedAfter (TickRateTimeOut);
 			eventRaised.ShouldBeFalse();
 		}
 	}
