@@ -1,0 +1,1 @@
+..\..\tools\ILMerge\ILMerge.exe /log /t:winexe /out:PomodoroTimerMerged.exe PomodoroTimer.exe Microsoft.Practices.Unity.StaticFactory.dll Microsoft.Practices.Unity.Interception.dll Microsoft.Practices.Unity.Interception.Configuration.dll Microsoft.Practices.Unity.dll Microsoft.Practices.Unity.Configuration.dll Microsoft.Practices.ObjectBuilder2.dll
