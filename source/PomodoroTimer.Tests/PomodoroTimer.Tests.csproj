@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Rhino.Mocks, Version=3.5.0.1337, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\tools\xUnit\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\..\lib\xUnit.BDDExtensions\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="xunit, Version=1.1.0.1323, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\tools\xUnit\xunit.dll</HintPath>
+      <HintPath>..\..\tools\xUnit\xunit.dll</HintPath>
     </Reference>
     <Reference Include="xUnit.BDDExtensions, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\tools\xUnit\xUnit.BDDExtensions.dll</HintPath>
+      <HintPath>..\..\lib\xUnit.BDDExtensions\xUnit.BDDExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -76,7 +76,7 @@
     <Compile Include="PomodoroResourceRepositorySpecs\when_icon_is_requestet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PomodoroTimer.csproj">
+    <ProjectReference Include="..\PomodoroTimer\PomodoroTimer.csproj">
       <Project>{E26EF622-F5B3-4DCF-9425-C80417D0F2EF}</Project>
       <Name>PomodoroTimer</Name>
     </ProjectReference>
