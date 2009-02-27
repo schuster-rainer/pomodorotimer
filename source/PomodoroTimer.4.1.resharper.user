@@ -12,7 +12,9 @@
     <NAntPath value="" />
   </NAntValidationSettings>
   <RecentFiles>
-    <RecentFiles />
+    <RecentFiles>
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:CountDownTimer.cs" caret="382" scrollPosition="0|12" />
+    </RecentFiles>
     <RecentEdits />
   </RecentFiles>
   <UnitTestRunner>

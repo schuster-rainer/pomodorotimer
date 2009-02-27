@@ -1,0 +1,7 @@
+# This file is a template for your local settings. Do not check it in to source control as these values serve
+# only your local development environment.
+#
+# The values specified here override the settings found in settings.yml and will affect all contexts,
+# i.e. "development" and "production".
+
+build_configuration: some value

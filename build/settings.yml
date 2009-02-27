@@ -1,0 +1,15 @@
+global: &global
+  build_dir: output
+  source_dir: ../source
+  tools_dir: ../tools
+  build_configuration: Debug  
+  build_number: '1.1.0.0'
+  trace: true
+  deploy_dir: deploy
+  
+development:
+  <<: *global
+
+production:
+  <<: *global
+  build_configuration: Release
