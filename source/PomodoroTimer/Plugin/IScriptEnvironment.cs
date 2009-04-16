@@ -7,6 +7,7 @@ namespace PomodoroTimer.Plugin
     {
         void CreateAndInitializeRuntime();
         event EventHandler<ScriptScopeEventArgs> RegisterGlobals;
+		event EventHandler<ScriptScopeEventArgs> ScriptExecuted;
     }
 
     public class ScriptScopeEventArgs : EventArgs

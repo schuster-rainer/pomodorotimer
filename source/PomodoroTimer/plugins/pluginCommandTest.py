@@ -1,16 +1,21 @@
-﻿from PomodoroTimer.Plugin import PluginCommandBase
+﻿from PomodoroTimer.Plugin import ScriptCommandBase
+from PomodoroTimer.Plugin import IOutputStream
 
-print "Loading PluginTestCommand"
+print "loading Script"
 
-class PluginTestCommand(PluginCommandBase):
-    def __new__():
-        #self.outputStream = outputStream
-        print "creating PluginTestCommand"
+class TestCommand(ScriptCommandBase):
+    def __init__(self):
+        self.outputStream = IoC.Resolve[IOutputStream]()
+        self.outputStream.Write("creating PluginTestCommand\r\n")
 
-	def Execute(self):
-		outputStream.Write("PluginTestCommand called\r\n")
+    def Execute(self):
+		self.outputStream.Write("executing Command\r\n")
+
+    def GetName(self):
+        return "TestCommand"
+
 		
 #testCommand = PluginTestCommand()
-#testCommand.outputStream = IoC.Resolve[IOutputStream]()
+#testCommand.outputStream = 
 #testCommand = IoC.Resolve[PluginTestCommand]()
 #Commands.AddCommand(testCommand)

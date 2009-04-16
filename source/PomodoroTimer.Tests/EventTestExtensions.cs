@@ -19,7 +19,7 @@ namespace PomodoroTimer.Tests
 				.IgnoreArguments ();
 		}
 
-		public static bool wasRaisedAfter ( this EventWaitHandle eventWaitHandle, int milliseconds )
+		public static bool WasRaisedAfter ( this EventWaitHandle eventWaitHandle, int milliseconds )
 		{
 			return eventWaitHandle.WaitOne ( milliseconds );
 		}

@@ -8,7 +8,7 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		protected override void Because ()
 		{
 			Sut.Start();
-			alertEvent.wasRaisedAfter (CountDownTimeOut);
+			alertEvent.WasRaisedAfter (CountDownTimeOut);
 			alertEvent.Reset();
 			tickEvent.Reset();
 		}
@@ -16,14 +16,14 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		[Observation]
 		public void should_not_alert_any_more ()
 		{
-			bool eventRaised = alertEvent.wasRaisedAfter (CountDownTimeOut);
+			bool eventRaised = alertEvent.WasRaisedAfter (CountDownTimeOut);
 			eventRaised.ShouldBeFalse();
 		}
 
 		[Observation]
         public void should_not_tick_any_more()
 		{
-			bool eventRaised = tickEvent.wasRaisedAfter (TickRateTimeOut);
+			bool eventRaised = tickEvent.WasRaisedAfter (TickRateTimeOut);
 			eventRaised.ShouldBeFalse();
 		}
 	}

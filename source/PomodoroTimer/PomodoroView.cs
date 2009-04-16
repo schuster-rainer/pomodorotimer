@@ -4,28 +4,42 @@ using System.Windows.Forms;
 
 namespace PomodoroTimer
 {
+	using Plugin;
 
-    public sealed class PomodoroView : IPomodoroView, IDisposable
+	public sealed class PomodoroView : IPomodoroView, IDisposable
 	{
 		private const int FIFTEEN_SECONDS_IN_MILLISEC = 15*1000;
 
 		private readonly IResourceRepository resourceRepository;
 		private readonly IPomodoroController controller;
+		private readonly IScriptCommandEnvironment scriptCommandEnv;
 
 		private NotifyIcon notifyIcon;
-
-		private ContextMenu notificationMenu;
-		private MenuItem timerDisplayMenuItem;
+		private ContextMenuStrip notificationMenu;
+		private ToolStripMenuItem timerDisplayMenuItem;
+		private ToolStripMenuItem pluginsMenuItem;
 
 		public PomodoroView (
 						 IResourceRepository resourceRepository,
-						 IPomodoroController controller)
+						 IPomodoroController controller,
+						 IScriptCommandEnvironment scriptCommandEnv)
 		{
 
 			this.resourceRepository = resourceRepository;
 			this.controller = controller;
+			this.scriptCommandEnv = scriptCommandEnv;
 			this.controller.View = this;
+			scriptCommandEnv.CommandCreated += scriptCommandEnv_CommandCreated;
+
 			initializeComponent ();
+			
+			scriptCommandEnv.CreateAndInitializeRuntime();
+		}
+
+		void scriptCommandEnv_CommandCreated(object sender, CommandEventArgs e)
+		{
+			pluginsMenuItem.DropDownItems.Add (new ToolStripMenuItem (e.Command.GetName()));
+			pluginsMenuItem.Enabled = true;
 		}
 
 		private void initializeComponent ()
@@ -36,22 +50,30 @@ namespace PomodoroTimer
 
 		private void initializeMenuAndBindCommands ()
 		{
-			timerDisplayMenuItem = new MenuItem ( formatTimeDisplay ( 0, 0 ) );
-			MenuItem[] menu = new MenuItem[] {
-				timerDisplayMenuItem,				
-				new MenuItem("Start Pomodoro", 
-					(s,e) => controller.StartCommand.Execute() ),				
-				new MenuItem("Start Break", 
-					(s,e) => controller.StartBreakCommand.Execute() ),
-				new MenuItem("Start Set-Break",
-					(s,e) => controller.StartSetBreakCommand.Execute() ),
-				new MenuItem("About", 
-					(s,e) => controller.AboutCommand.Execute() ),
-				new MenuItem("Exit",
-					(s,e) => controller.ExitCommand.Execute() )
-			};
+			notificationMenu = new ContextMenuStrip ();
 
-			notificationMenu = new ContextMenu ( menu );
+			pluginsMenuItem = new ToolStripMenuItem("Plugins");
+			pluginsMenuItem.Enabled = false;
+			timerDisplayMenuItem = new ToolStripMenuItem(formatTimeDisplay(0, 0));
+
+			notificationMenu.Items.Add (timerDisplayMenuItem);
+			notificationMenu.Items.Add (new ToolStripMenuItem("Start Pomodoro", null,
+					(s,e) => controller.StartCommand.Execute() ) );
+			notificationMenu.Items.Add (new ToolStripMenuItem ("Start Break", null,
+				                       (s, e) => controller.StartBreakCommand.Execute()));
+
+			notificationMenu.Items.Add (new ToolStripMenuItem("Start Set-Break", null,
+					(s,e) => controller.StartSetBreakCommand.Execute() ));
+
+			notificationMenu.Items.Add(new ToolStripSeparator());
+			notificationMenu.Items.Add (pluginsMenuItem);
+			notificationMenu.Items.Add (new ToolStripSeparator());
+			notificationMenu.Items.Add (new ToolStripMenuItem("About", null,
+					(s,e) => controller.AboutCommand.Execute() ) );
+
+			notificationMenu.Items.Add (new ToolStripMenuItem("Exit", null,
+					(s,e) => controller.ExitCommand.Execute() ) );
+			
 		}
 
 
@@ -60,7 +82,7 @@ namespace PomodoroTimer
 			notifyIcon = new NotifyIcon
 			             	{
 			             		Icon = resourceRepository.GetEmbeddedResourceByName <Icon> ("alarmclock"),
-			             		ContextMenu = notificationMenu,
+			             		ContextMenuStrip = notificationMenu,
 			             		BalloonTipTitle = "Pomodoro Timer",
 			             		BalloonTipText = "Pomodoro ended"
 			             	};

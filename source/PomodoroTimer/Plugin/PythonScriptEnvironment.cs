@@ -10,13 +10,13 @@ namespace PomodoroTimer.Plugin
     {
         private readonly IOutputStream outputStream;
 
-        public PythonScriptEnvironment( IOutputStream outputStream, IUnityContainer container)
-            : base(outputStream, container)
+    	public PythonScriptEnvironment( IOutputStream outputStream)
+            : base(outputStream)
         {
-            this.outputStream = outputStream;
+        	this.outputStream = outputStream;
         }
 
-        protected override Stream createRuntimeStream(IOutputStream outputStream)
+    	protected override Stream createRuntimeStream(IOutputStream outputStream)
         {
             var pythonStream = new PythonStreamBridge(outputStream);
             return pythonStream;

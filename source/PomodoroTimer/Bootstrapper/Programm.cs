@@ -26,16 +26,7 @@ namespace PomodoroTimer.Bootstrapper
 		private static void RunApplication ()
 		{
 			IUnityContainer container = createDependencyContainer ();
-			configureDependencyContainer ( container );
-
-            //var commandEnvironment = container.Resolve<ICommandScriptEnvironment>();
-            //commandEnvironment.CreateAndInitializeRuntime();
-
-            //foreach (var command in container.Resolve<ICommandRepository>())
-            //{
-            //    command.Execute(); 
-            //}
-            
+			configureDependencyContainer ( container );            
 			var pomodoroView = container.Resolve<IPomodoroView> ();
 			pomodoroView.Show();
 			Application.Run();
@@ -55,7 +46,7 @@ namespace PomodoroTimer.Bootstrapper
 			container.RegisterType<IPomodorCommandFactory, PomodoroCommandFactory> (new ContainerControlledLifetimeManager());
 		    container.RegisterType<IOutputStream, OutputStreamFacade>(new ContainerControlledLifetimeManager());
             container.RegisterType<ScriptEnvironmentBase, PythonScriptEnvironment>(new ContainerControlledLifetimeManager());
-            container.RegisterType<ICommandScriptEnvironment, PluginCommandScriptDecorator>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IScriptCommandEnvironment, ScriptCommandDecorator>(new ContainerControlledLifetimeManager());
 		    container.RegisterType<ICommandRepository, CommandRepository> (new ContainerControlledLifetimeManager());
 
 		    container.RegisterInstance<IUnityContainer>(container);

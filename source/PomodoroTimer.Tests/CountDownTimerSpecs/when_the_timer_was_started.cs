@@ -13,14 +13,14 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		[Observation]
 		public void should_tick ()
 		{
-		    bool eventRaised = tickEvent.wasRaisedAfter (TickRateTimeOut);
+		    bool eventRaised = tickEvent.WasRaisedAfter (TickRateTimeOut);
 		    eventRaised.ShouldBeTrue();
 		}
 
 	    [Observation]
 		public void should_alert_after_timer_expired ()
 		{
-			alertEvent.wasRaisedAfter (CountDownTimeOut).ShouldBeTrue();
+			alertEvent.WasRaisedAfter (CountDownTimeOut).ShouldBeTrue();
 		}
 	}
 }

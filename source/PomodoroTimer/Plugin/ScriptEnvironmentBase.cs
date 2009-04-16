@@ -21,12 +21,10 @@ namespace PomodoroTimer.Plugin
         protected ScriptEngine engine;
         protected ScriptRuntime runtime;
         protected IOutputStream outputStream;
-        private readonly IUnityContainer Container;
 
-        public ScriptEnvironmentBase(IOutputStream outputStream, IUnityContainer container)
+        public ScriptEnvironmentBase(IOutputStream outputStream)
         {
             this.outputStream = outputStream;
-            Container = container;
         }
 
         public virtual void CreateAndInitializeRuntime()
@@ -45,6 +43,7 @@ namespace PomodoroTimer.Plugin
         }
 
         public event EventHandler<ScriptScopeEventArgs> RegisterGlobals;
+    	public event EventHandler <ScriptScopeEventArgs> ScriptExecuted;
 
         protected virtual void OnRegisterGlobals(ScriptScopeEventArgs eventArgs)
         {
@@ -53,6 +52,14 @@ namespace PomodoroTimer.Plugin
                 RegisterGlobals(this, eventArgs);
             }
         }
+
+		protected virtual void OnScriptExecuted(ScriptScopeEventArgs e)
+		{
+			if (ScriptExecuted != null)
+			{
+				ScriptExecuted(this, e);
+			}
+		}
 
         public abstract ScriptEngine createEngine();
 
@@ -114,30 +121,18 @@ namespace PomodoroTimer.Plugin
             ScriptSource source = engine.CreateScriptSourceFromFile(path);
             CompiledCode code = source.Compile(); 
             ScriptScope globals = engine.CreateScope();
-            registerGlobals(globals);
-            source.Execute(globals);
-
-            var items = globals.GetItems();
-            var plugins = (from item in items
-                           let type = item.Value as PythonType
-                           where type != null
-                           let clrType = IronPython.Runtime.ClrModule.GetClrType(type)
-                           where clrType.IsAbstract == false
-                           where clrType.BaseType == typeof(PluginCommandBase)
-                           select clrType);
-
-            foreach (Type pluginType in plugins)
-            {
-                //object cmd = Container.Resolve(pluginType);
-                //var cmdRep = Container.Resolve<ICommandRepository>();
-                //cmdRep.AddCommand(cmd as IPluginCommand);
-            }
-
-            //Test obj = Ops.Call(ptype) as Test;
-
+            
+			registerGlobals(globals);
+        	executeScript (source, globals);
         }
 
-        private void showError(string title, string name, Exception e)
+    	private void executeScript (ScriptSource source, ScriptScope globals)
+    	{
+			source.Execute(globals);
+    		OnScriptExecuted (new ScriptScopeEventArgs (globals));
+    	}
+
+    	private void showError(string title, string name, Exception e)
         {
             string caption = String.Format(title, name);
             ExceptionOperations eo = engine.GetService<ExceptionOperations>();

@@ -30,7 +30,7 @@ namespace PomodoroTimer.Tests.CountDownTimerSpecs
 		[Observation]
 		public void should_signal_change ()
 		{
-		    timerChangedEvent.wasRaisedAfter(TickRateTimeOut);
+		    timerChangedEvent.WasRaisedAfter(TickRateTimeOut);
 		}
 	}
 }

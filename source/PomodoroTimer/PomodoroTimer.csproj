@@ -79,7 +79,8 @@
     <Compile Include="Commands\StartPomodoroBreakCommand.cs" />
     <Compile Include="Commands\StartPomodoroCommand.cs" />
     <Compile Include="Commands\StartPomodoroSetBreakCommand.cs" />
-    <Compile Include="Plugin\CommandStore.cs" />
+    <Compile Include="Plugin\CommandRepository.cs" />
+    <Compile Include="Plugin\ICommandRepository.cs" />
     <Compile Include="Plugin\IOutputStream.cs" />
     <Compile Include="IPomodoroCommandFactory.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -89,11 +90,11 @@
     <Compile Include="IResourceRepository.cs" />
     <Compile Include="CountDownTimer.cs" />
     <Compile Include="Commands\PomodoroTimerCommand.cs" />
-    <Compile Include="Plugin\IPluginCommand.cs" />
-    <Compile Include="Plugin\ICommandScriptEnvironment.cs" />
+    <Compile Include="Plugin\IScriptCommand.cs" />
+    <Compile Include="Plugin\IScriptCommandEnvironment.cs" />
     <Compile Include="Plugin\IScriptEnvironment.cs" />
-    <Compile Include="Plugin\PluginCommandBase.cs" />
-    <Compile Include="Plugin\PluginCommandScriptDecorator.cs" />
+    <Compile Include="Plugin\ScriptCommandBase.cs" />
+    <Compile Include="Plugin\ScriptCommandDecorator.cs" />
     <Compile Include="Plugin\PythonStreamBridge.cs" />
     <Compile Include="PomodoroCommandFactory.cs" />
     <Compile Include="PomodoroController.cs" />

@@ -49,6 +49,13 @@ namespace PomodoroTimer
 			countDownTimer.TimerChanged += countDownTimer_TimerChanged;
 		}
 
+		private void unsubcribeFromCountDownTimerEvents()
+		{
+			countDownTimer.Tick -= countDownTimer_Tick;
+			countDownTimer.Alert -= countDownTimer_Tick;
+			countDownTimer.TimerChanged -= countDownTimer_TimerChanged;
+		}
+
 		void countDownTimer_TimerChanged ( object sender, CountDownEventArgs e )
 		{
 			timeSpanToCountDown = e.Duration;
