@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Practices.Unity;
+using PomodoroTimer.Plugin;
 
 namespace PomodoroTimer.Bootstrapper
 {
@@ -25,7 +27,16 @@ namespace PomodoroTimer.Bootstrapper
 		{
 			IUnityContainer container = createDependencyContainer ();
 			configureDependencyContainer ( container );
-			var pomodoroView = container.Resolve<PomodoroView> ();
+
+            //var commandEnvironment = container.Resolve<ICommandScriptEnvironment>();
+            //commandEnvironment.CreateAndInitializeRuntime();
+
+            //foreach (var command in container.Resolve<ICommandRepository>())
+            //{
+            //    command.Execute(); 
+            //}
+            
+			var pomodoroView = container.Resolve<IPomodoroView> ();
 			pomodoroView.Show();
 			Application.Run();
 		}
@@ -42,6 +53,21 @@ namespace PomodoroTimer.Bootstrapper
 			container.RegisterType<IPomodoroController, PomodoroController> (new ContainerControlledLifetimeManager());
 			container.RegisterType<IPomodoroView, PomodoroView> ( new ContainerControlledLifetimeManager());
 			container.RegisterType<IPomodorCommandFactory, PomodoroCommandFactory> (new ContainerControlledLifetimeManager());
+		    container.RegisterType<IOutputStream, OutputStreamFacade>(new ContainerControlledLifetimeManager());
+            container.RegisterType<ScriptEnvironmentBase, PythonScriptEnvironment>(new ContainerControlledLifetimeManager());
+            container.RegisterType<ICommandScriptEnvironment, PluginCommandScriptDecorator>(new ContainerControlledLifetimeManager());
+		    container.RegisterType<ICommandRepository, CommandRepository> (new ContainerControlledLifetimeManager());
+
+		    container.RegisterInstance<IUnityContainer>(container);
+
 		}
+
+        internal class OutputStreamFacade : IOutputStream
+        {
+            public void Write(string text)
+            {
+                Debug.Write(text);
+            }
+        }
 	}
 }

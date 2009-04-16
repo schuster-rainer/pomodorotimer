@@ -1,0 +1,152 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer>
+      <setting name="UsedSolutionBuilderID">0</setting>
+    </integer>
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:CountDownTimer.cs" caret="382" fromTop="5" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:IPluginCommand.cs" caret="89" fromTop="3" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:IScriptEnvironment.cs" caret="56" fromTop="1" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PythonScriptEnvironment.cs" caret="800" fromTop="18" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="59" fromTop="4" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:CommandStore.cs" caret="47" fromTop="1" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandBase.cs" caret="248" fromTop="12" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PythonStreamBridge.cs" caret="460" fromTop="15" />
+      <File id="d:Miscellaneous Files/f:UnityContainerBase.cs" caret="28299" fromTop="9" />
+      <File id="d:Miscellaneous Files/f:NamedTypeBuildKey.cs" caret="1490" fromTop="11" />
+      <File id="d:Miscellaneous Files/f:UnityContainer.cs" caret="18898" fromTop="6" />
+      <File id="d:Miscellaneous Files/f:BuilderContext.cs" caret="2989" fromTop="19" />
+      <File id="d:Miscellaneous Files/f:Builder.cs" caret="3088" fromTop="12" />
+      <File id="d:Miscellaneous Files/f:BuildKeyMappingStrategy.cs" caret="1417" fromTop="18" />
+      <File id="d:Miscellaneous Files/f:LifetimeStrategy.cs" caret="2274" fromTop="9" />
+      <File id="d:Miscellaneous Files/f:StrategyChain.cs" caret="3439" fromTop="18" />
+      <File id="d:Miscellaneous Files/f:RecoveryStack.cs" caret="1515" fromTop="22" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="4317" fromTop="12" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="152" fromTop="4" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:IPomodoroController.cs" caret="0" fromTop="0" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="1203" fromTop="25" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PythonScriptEnvironment.cs" caret="1236" fromTop="7" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="1534" fromTop="18" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="1843" fromTop="27" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="1500" fromTop="16" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="1593" fromTop="26" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="94" fromTop="5" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="94" fromTop="8" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="366" fromTop="9" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PythonScriptEnvironment.cs" caret="286" fromTop="9" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="13" fromTop="0" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PluginCommandScriptDecorator.cs" caret="94" fromTop="4" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="25" fromTop="0" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="1967" fromTop="9" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="1827" fromTop="8" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="827" fromTop="9" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="301" fromTop="7" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="416" fromTop="12" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="4514" fromTop="15" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="152" fromTop="4" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="4317" fromTop="12" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="717" fromTop="11" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="1024" fromTop="18" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerMSTest>
+    <UseTestRunConfigFromMetadataFile>False</UseTestRunConfigFromMetadataFile>
+  </UnitTestRunnerMSTest>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="MemoryStream" priority="0" />
+      <Item value="protected" priority="2" />
+      <Item value="override" priority="2" />
+      <Item value="return" priority="1" />
+      <Item value="IOutputStream" priority="1" />
+      <Item value="pythonStream" priority="0" />
+      <Item value="runtime" priority="1" />
+      <Item value="private" priority="0" />
+      <Item value="void" priority="3" />
+      <Item value="createRuntimeStream" priority="0" />
+      <Item value="outputStream" priority="0" />
+      <Item value="public" priority="3" />
+      <Item value="error" priority="0" />
+      <Item value="string" priority="2" />
+      <Item value="ICommandExecutor" priority="0" />
+      <Item value="static" priority="0" />
+      <Item value="CreateParams" priority="0" />
+      <Item value="new" priority="3" />
+      <Item value="name" priority="0" />
+      <Item value="pluginCommand" priority="1" />
+      <Item value="this" priority="0" />
+      <Item value="Guid" priority="2" />
+      <Item value="Plugins" priority="0" />
+      <Item value="interface" priority="0" />
+      <Item value="IScriptEnvironment" priority="2" />
+      <Item value="loadPlugins" priority="0" />
+      <Item value="IPluginScriptEnvironment" priority="0" />
+      <Item value="ScriptEnvironmentBase" priority="1" />
+      <Item value="scriptEnvironment" priority="1" />
+      <Item value="command" priority="1" />
+      <Item value="PluginCommandScriptDecorator" priority="0" />
+      <Item value="PythonScriptEnvironment" priority="0" />
+      <Item value="pluginEnvironment" priority="1" />
+      <Item value="MessageBox" priority="0" />
+      <Item value="text" priority="1" />
+      <Item value="CommandStore" priority="0" />
+      <Item value="if" priority="0" />
+      <Item value="DebugOutputStreamFacade" priority="1" />
+      <Item value="foreach" priority="0" />
+      <Item value="IPluginCommand" priority="0" />
+      <Item value="Activator" priority="0" />
+      <Item value="pluginType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Scripting.Hosting.ScriptRuntime">
+      <Item value="IO" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Scripting.Hosting.ScriptIO">
+      <Item value="SetInput" priority="0" />
+      <Item value="OutputWriter" priority="0" />
+      <Item value="ErrorWriter" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.TextWriter">
+      <Item value="Write" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Guid">
+      <Item value="NewGuid" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PomodoroTimer.Plugin.IPluginCommand">
+      <Item value="Execute" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PomodoroTimer.Plugin.PluginCommandScriptDecorator">
+      <Item value="CreateAndInitializeRuntime" priority="0" />
+      <Item value="ExecuteCommandByName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@PomodoroTimer.Plugin.CommandStore">
+      <Item value="Commands" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:PomodoroTimer.Plugin.PluginCommandBase">
+      <Item value="Execute" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Debug">
+      <Item value="Write" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Activator">
+      <Item value="CreateInstance" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

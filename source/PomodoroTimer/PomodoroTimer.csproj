@@ -28,6 +28,14 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
+    <Reference Include="IronPython, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\IronPython.Modules.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Unity\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
@@ -35,6 +43,14 @@
     <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Core, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronPython\Microsoft.Scripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -63,6 +79,8 @@
     <Compile Include="Commands\StartPomodoroBreakCommand.cs" />
     <Compile Include="Commands\StartPomodoroCommand.cs" />
     <Compile Include="Commands\StartPomodoroSetBreakCommand.cs" />
+    <Compile Include="Plugin\CommandStore.cs" />
+    <Compile Include="Plugin\IOutputStream.cs" />
     <Compile Include="IPomodoroCommandFactory.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="ICountDownTimer.cs" />
@@ -71,6 +89,12 @@
     <Compile Include="IResourceRepository.cs" />
     <Compile Include="CountDownTimer.cs" />
     <Compile Include="Commands\PomodoroTimerCommand.cs" />
+    <Compile Include="Plugin\IPluginCommand.cs" />
+    <Compile Include="Plugin\ICommandScriptEnvironment.cs" />
+    <Compile Include="Plugin\IScriptEnvironment.cs" />
+    <Compile Include="Plugin\PluginCommandBase.cs" />
+    <Compile Include="Plugin\PluginCommandScriptDecorator.cs" />
+    <Compile Include="Plugin\PythonStreamBridge.cs" />
     <Compile Include="PomodoroCommandFactory.cs" />
     <Compile Include="PomodoroController.cs" />
     <Compile Include="PomodoroView.cs" />
@@ -88,6 +112,8 @@
     </Compile>
     <Compile Include="PomodoroResourceRepository.cs" />
     <Compile Include="Bootstrapper\UniqueClassInstance.cs" />
+    <Compile Include="Plugin\PythonScriptEnvironment.cs" />
+    <Compile Include="Plugin\ScriptEnvironmentBase.cs" />
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,5 +135,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\alarmclock_preferences.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="plugins\pluginCommandTest.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
