@@ -23,22 +23,17 @@
       <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:PomodoroResourceRepositorySpecs/f:when_icon_is_requestet.cs" caret="573" fromTop="19" />
       <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:CountDownTimerSpecs/f:when_the_timer_was_started.cs" caret="391" fromTop="9" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:ICountDownTimer.cs" caret="194" fromTop="8" />
-      <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:Commands/f:StartPomodoroBreakCommandSpecs.cs" caret="221" fromTop="7" />
-      <File id="d:Miscellaneous Files/f:XunitTestMethodRunner.cs" caret="1678" fromTop="21" />
-      <File id="d:Miscellaneous Files/f:SpecificationTestCommand.cs" caret="727" fromTop="2" />
-      <File id="d:Miscellaneous Files/f:PolicyList.cs" caret="8733" fromTop="10" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:IOutputStream.cs" caret="0" fromTop="0" />
-      <File id="d:Miscellaneous Files/f:BuilderContext.cs" caret="8234" fromTop="13" />
-      <File id="d:Miscellaneous Files/f:RecoveryStack.cs" caret="1014" fromTop="10" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ICommandRepository.cs" caret="91" fromTop="4" />
-      <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:ScriptingSpecs/f:ScriptEnvironmentSpec.cs" caret="714" fromTop="16" />
-      <File id="d:Miscellaneous Files/f:StrategyChain.cs" caret="3640" fromTop="12" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:IScriptEnvironment.cs" caret="535" fromTop="19" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="451" fromTop="15" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:PythonScriptEnvironment.cs" caret="839" fromTop="13" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:PomodoroView.cs" caret="1056" fromTop="12" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptEnvironmentBase.cs" caret="3545" fromTop="10" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="1085" fromTop="12" />
+      <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:ScriptingSpecs/f:ScriptEnvironmentSpec.cs" caret="1190" fromTop="12" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptCommandDecorator.cs" caret="1887" fromTop="11" />
+      <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:Commands/f:StartPomodoroBreakCommandSpecs.cs" caret="190" fromTop="7" />
     </RecentFiles>
     <RecentEdits>
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:PomodoroView.cs" caret="581" fromTop="19" />
@@ -64,6 +59,7 @@
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="315" fromTop="8" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:plugins/f:pluginCommandTest.py" caret="449" fromTop="14" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Bootstrapper/f:Programm.cs" caret="715" fromTop="7" />
+      <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:ScriptingSpecs/f:ScriptEnvironmentSpec.cs" caret="1190" fromTop="12" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>

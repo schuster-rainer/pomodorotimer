@@ -35,10 +35,10 @@ namespace PomodoroTimer.Tests.Scripting
 			Sut.CreateAndInitializeRuntime();
 		}
 
-		[Observation]
-		public void should_load_plugin ()
-		{
-		}
+        //[Observation]
+        //public void should_load_plugin ()
+        //{
+        //}
 	}
 	public class ScriptEnvironmentSpec
 	{
