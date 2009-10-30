@@ -1,7 +1,10 @@
+
 *resharper.user
 [Dd]ebug/
 [Rr]elease/
 [Bb]in/
 [Oo]bj/
 *.sln.cache
+*.user
+*.suo
 _ReSharper.*/

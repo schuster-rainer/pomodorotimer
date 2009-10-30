@@ -34,6 +34,7 @@
       <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:ScriptingSpecs/f:ScriptEnvironmentSpec.cs" caret="1190" fromTop="12" />
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/d:Plugin/f:ScriptCommandDecorator.cs" caret="1887" fromTop="11" />
       <File id="19E5ED92-48E5-4A8B-B068-9302F0A2A9F9/d:Commands/f:StartPomodoroBreakCommandSpecs.cs" caret="190" fromTop="7" />
+      <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:IResourceRepository.cs" caret="69" fromTop="3" />
     </RecentFiles>
     <RecentEdits>
       <File id="E26EF622-F5B3-4DCF-9425-C80417D0F2EF/f:PomodoroView.cs" caret="581" fromTop="19" />
