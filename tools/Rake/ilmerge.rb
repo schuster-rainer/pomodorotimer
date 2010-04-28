@@ -5,7 +5,7 @@ module Rake
   class ILMerge < TaskLib
     attr_accessor :name, :output_file, :log_file, :target_kind, 
                 :version, :xmldocs, :input_assemblies, :toolpath, 
-                :allow_wildcards, :input_directories
+                :allow_wildcards, :input_directories, :internalize, :allow_dupplicates
     
     def initialize(name=:ilmerge)
       @name = name
@@ -18,6 +18,8 @@ module Rake
       @toolpath = nil
       @allow_wildcards = false
       @input_directories = nil
+	  @internalize = false 
+	  @allow_dupplicates = false
       yield self if block_given?
       define
     end
@@ -46,18 +48,18 @@ module Rake
     
     def eval_string( property, option )
         if property
-            "/#{option.escape}:#{property.escape} "
+            "/#{option.escape}:#{property.escape}"
         end
         ""
     end
     
     def get_merge_command
-        "#{toolpath.escape} #{eval_string(target_kind,"target")} #{eval_string(version, "ver")} #{eval_string(xmldocs, "xmldocs")} #{eval_string(log_file, "log")} #{eval_flag(allow_wildcards, "wildcards")} /out:#{output_file.escape} #{input_assemblies.join(" ")}"
+        "#{toolpath.escape} #{eval_flag(allow_dupplicates,"allowDup")} #{eval_flag(internalize,"internalize")} #{eval_string(target_kind,"target")} #{eval_string(version, "ver")} #{eval_string(xmldocs, "xmldocs")} #{eval_string(log_file, "log")} #{eval_flag(allow_wildcards, "wildcards")} /out:#{output_file.escape} #{input_assemblies.join(" ")}"
     end
     
     def eval_flag( flag, option)
-         if allow_wildcards 
-            "/wildcards" 
+         if flag
+            "/#{option}"
          else
             ""
          end

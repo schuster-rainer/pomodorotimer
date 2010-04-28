@@ -1,10 +1,11 @@
 @echo off
+set PATH=%PATH%;"..\tools\ironruby-1.0_NET20\bin"
 rem This is needed for machines that have other Ruby interpreters installed.
 set rubyopt=
 
 :Build
 cls
-"..\tools\Rake\bin\ruby.exe" "..\tools\Rake\bin\rake" %*
+ir "..\tools\Rake\bin\rake" %*
 
 rem Bail if we're running a TeamCity build.
 if defined TEAMCITY_PROJECT_NAME goto Quit

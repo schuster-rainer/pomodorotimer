@@ -1,13 +1,9 @@
 require 'rake/clean'
 require 'rake/packagetask'
 require 'yaml'
-require File.expand_path('../tools/Rake/msbuild')
-require File.expand_path('../tools/Rake/xunit')
-require File.expand_path('../tools/Rake/string')
-require File.expand_path('../tools/Rake/assemblyinfo')
-require File.expand_path('../tools/Rake/task')
-require File.expand_path('../tools/Rake/ilmerge')
-require File.expand_path('../tools/Rake/teamcity') if ENV['TEAMCITY_PROJECT_NAME']
+Dir.glob(File.join(File.dirname(__FILE__), '../tools/Rake/*.rb')).each do |f|
+	require f
+end
 require File.expand_path('bootstrap')
 
 Rake.application.options.trace = $config['trace']
@@ -67,6 +63,7 @@ namespace :merge do
         t.target_kind = 'winexe'
         t.version = $config['build_number']
         t.input_directories = [$config['build_dir']]
+		t.internalize = true
         t.input_assemblies = ['PomodoroTimer.exe'.in($config['build_dir']), '*.dll'.in($config['build_dir'])]
     end
 end
@@ -80,9 +77,23 @@ namespace :test do
 	end
 end
 
-Rake::PackageTask.new('PomodoroTimer', $config['build_number']) do |t|
-	t.need_zip = true
-	t.zip_command = '7-Zip/7za.exe'.in($config['tools_dir']).escape() + ' a '
-	t.package_files.include('build/**/*.*')
-	t.package_files.exclude('build/**/Tests')
+# Rake::PackageTask.new('PomodoroTimer', $config['build_number']) do |t|
+	# t.need_zip = true
+	# t.zip_command = '7-Zip/7za.exe'.in($config['tools_dir']).escape() + ' a '
+	# t.package_files.include('build/**/*.*')
+	# t.package_files.exclude('build/**/Tests')
+# end
+
+desc 'Packages the build artifacts'
+task :package => 'compile:app' do
+	# sz = SevenZip.new({ :tool => '7-Zip/7za.exe'.in($config['tools_dir']).escape() + ' a ',
+				# :zip_name => 'PomodoroTimer' + $config['build_number'] } )
+	sz = SevenZip.new({ :tool => '../tools/7-Zip/7za.exe',
+						:zip_name => "PomodoroTimer#{$config['build_number']}.zip" } )	
+	Dir.chdir("#{$config['build_dir']}") do
+		sz.zip :files => FileList.new() \
+					.include('**/*.*')\
+					.exclude("obj") \
+					.exclude("**/Tests")
+	end
 end

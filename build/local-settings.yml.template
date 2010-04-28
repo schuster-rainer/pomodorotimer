@@ -4,4 +4,4 @@
 # The values specified here override the settings found in settings.yml and will affect all contexts,
 # i.e. "development" and "production".
 
-build_configuration: some value
+build_configuration: production
